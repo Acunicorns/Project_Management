@@ -90,7 +90,7 @@ python concurrency.py
 - Sena Küçüksaraç
 - Furkan Küçük
 
-**Note**: Replace placeholder names with actual team member names.
+
 
 ## License
 This project is for educational purposes and not licensed for commercial use.
