@@ -1,6 +1,5 @@
 # Game Console Operating System Simulation
 
-**Related Issue**: #20 (Documentation)
 
 ## Overview
 This project simulates a lightweight operating system (OS) for a game console, implementing core OS components: process management, memory management, concurrency, and a file system. The game console theme ensures low-latency process scheduling, efficient memory allocation for game assets, real-time input handling, and persistent storage for save files. The project is developed in Python and managed using GitHub for version control and task tracking.
@@ -14,10 +13,6 @@ This project simulates a lightweight operating system (OS) for a game console, i
 
 ## Installation
 1. **Clone the Repository**:
-   ```sh
-   git clone https://github.com/BME310-2025-Spring/BME310-Group01.git
-   cd BME310-Group01
-   ```
 
 2. **Requirements**:
    - Python 3.9+
@@ -40,7 +35,6 @@ This project simulates a lightweight operating system (OS) for a game console, i
 | `file_system.py`             | File system and file operations          |
 | `scheduler_visualization.py` | Scheduler queue visualization             |
 | `PCB-Design.md`              | Process Control Block design (#1)        |
-| `Thread-API-Design.md`       | Thread API documentation (#6)            |
 | `File-System-Design.md`      | File system design (#9)                  |
 | `Multi-Core-Design.md`       | Multi-core CPU design (#12)              |
 | `Project-Goal.md`            | Project objectives                       |
