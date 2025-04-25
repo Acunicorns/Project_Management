@@ -1,0 +1,3 @@
+# Project Goal
+
+The Mini Operating System Simulation Project aims to develop a game console operating system simulation. The system will feature low-latency process scheduling, efficient memory management, thread-based concurrency for handling controller inputs, and a file system for managing game assets (e.g., save files, textures). The theme of a game console OS will guide design decisions to prioritize real-time performance and user interaction.
