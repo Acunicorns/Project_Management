@@ -3,16 +3,16 @@
 ## 1. Introduction
 The Mini Operating System Simulation Project aimed to design and implement a simulated operating system (OS) tailored for a game console. The OS supports low-latency process management, efficient memory allocation, concurrent handling of controller inputs, and a file system for game assets. The game console theme guided our design to prioritize real-time performance and seamless user interaction. This report outlines the system’s design, its alignment with OS principles, and the influence of the game console theme.
 
-**Related Issue**: #19 (Final Report)
+**Related Issue**: #16 (Final Report)
 
 ## 2. System Design and Implementation
 
 ### 2.1 Process Management
 **Objective**: Simulate process creation, switching, and scheduling for game tasks (e.g., rendering, audio processing).  
 **Design Decisions**:
-- **Process Control Block (PCB)** (#1): Designed a lightweight PCB with fields for process ID, state, priority, registers, and program counter. The priority field ensured critical game tasks (e.g., rendering) were prioritized.
-- **Process Creation and Switching** (#2): Implemented in `process_management.py` to create and switch processes efficiently, minimizing latency for real-time tasks.
-- **Round Robin Scheduler** (#3, #13, #14): Adopted a Round Robin scheduler with a 10ms time quantum, optimized with priority-based scheduling to handle high-priority game processes first.
+- **Process Control Block (PCB)** (#2): Designed a lightweight PCB with fields for process ID, state, priority, registers, and program counter. The priority field ensured critical game tasks (e.g., rendering) were prioritized.
+- **Process Creation and Switching** (#3): Implemented in `process_management.py` to create and switch processes efficiently, minimizing latency for real-time tasks.
+- **Round Robin Scheduler** (#4, #14, #15): Adopted a Round Robin scheduler with a 10ms time quantum, optimized with priority-based scheduling to handle high-priority game processes first.
 
 **OS Principles**:  
 - **Process Isolation**: Each PCB maintains independent process states, ensuring no interference between tasks.
@@ -23,8 +23,8 @@ The Mini Operating System Simulation Project aimed to design and implement a sim
 ### 2.2 Memory Management
 **Objective**: Manage memory allocation for game assets (e.g., textures, audio buffers).  
 **Design Decisions**:
-- **Paging** (#4): Implemented a paging system with 4KB pages in `memory_management.py` to allocate memory for large assets efficiently.
-- **Address Translation** (#5): Simulated virtual-to-physical address translation using page tables, with a FIFO page replacement policy for page faults.
+- **Paging** (#5): Implemented a paging system with 4KB pages in `memory_management.py` to allocate memory for large assets efficiently.
+- **Address Translation** (#6): Simulated virtual-to-physical address translation using page tables, with a FIFO page replacement policy for page faults.
 
 **OS Principles**:  
 - **Virtual Memory**: Paging enables efficient memory use and isolation for game assets.
@@ -35,9 +35,9 @@ The Mini Operating System Simulation Project aimed to design and implement a sim
 ### 2.3 Concurrency & Synchronization
 **Objective**: Handle concurrent controller inputs and game logic processing.  
 **Design Decisions**:
-- **Thread API** (#6): Designed a lightweight thread API in `concurrency.py` for tasks like reading joystick inputs, documented in `Thread-API-Design.md`.
-- **Locks and Condition Variables** (#7): Implemented synchronization primitives to prevent race conditions in shared resources (e.g., input buffers).
-- **Producer-Consumer Problem** (#8): Simulated controller inputs (producers) and game logic (consumers) with a fixed-size buffer, ensuring synchronized data flow.
+- **Thread API** (#7): Designed a lightweight thread API in `concurrency.py` for tasks like reading joystick inputs, documented in `Thread-API-Design.md`.
+- **Locks and Condition Variables** (#8): Implemented synchronization primitives to prevent race conditions in shared resources (e.g., input buffers).
+- **Producer-Consumer Problem** (#9): Simulated controller inputs (producers) and game logic (consumers) with a fixed-size buffer, ensuring synchronized data flow.
 
 **OS Principles**:  
 - **Concurrency**: Threads enable parallel execution of input and game tasks.
@@ -48,8 +48,8 @@ The Mini Operating System Simulation Project aimed to design and implement a sim
 ### 2.4 File System
 **Objective**: Manage game assets like save files and textures.  
 **Design Decisions**:
-- **Directory Structure** (#9): Designed a hierarchical file system in `file_system.py`, with directories like `/saves` and `/assets`, documented in `File-System-Design.md`.
-- **File Operations** (#10): Implemented file creation, reading, writing, and deletion for efficient asset management.
+- **Directory Structure** (#10): Designed a hierarchical file system in `file_system.py`, with directories like `/saves` and `/assets`, documented in `File-System-Design.md`.
+- **File Operations** (#11): Implemented file creation, reading, writing, and deletion for efficient asset management.
 
 **OS Principles**:  
 - **Hierarchical Storage**: The directory structure organizes assets logically.
@@ -60,8 +60,8 @@ The Mini Operating System Simulation Project aimed to design and implement a sim
 ### 2.5 Bonus Features
 **Objective**: Enhance the OS with creative additions.  
 **Design Decisions**:
-- **Scheduler Queue Visualization** (#11): Implemented a console-based visualization in `scheduler_visualization.py` to display process queue dynamics, aiding debugging and presentation.
-- **Multi-Core CPU Simulation** (#12): Simulated a dual-core CPU in `process_management.py`, distributing processes across cores for parallel execution, documented in `Multi-Core-Design.md`.
+- **Scheduler Queue Visualization** (#12): Implemented a console-based visualization in `scheduler_visualization.py` to display process queue dynamics, aiding debugging and presentation.
+- **Multi-Core CPU Simulation** (#13): Simulated a dual-core CPU in `process_management.py`, distributing processes across cores for parallel execution, documented in `Multi-Core-Design.md`.
 
 **OS Principles**:  
 - **Parallelism**: Multi-core simulation improves throughput for compute-intensive tasks.
@@ -80,7 +80,7 @@ The design balances simplicity (for simulation) with realism (for game console n
 
 ## 4. Influence of the Game Console Theme
 The game console theme shaped every aspect of the design:
-- **Low Latency**: The Round Robin scheduler and optimized context switching (#13) prioritize rendering and input tasks to prevent gameplay lag.
+- **Low Latency**: The Round Robin scheduler and optimized context switching (#14) prioritize rendering and input tasks to prevent gameplay lag.
 - **Efficient Resource Use**: Paging and file systems were tailored for large, frequently accessed game assets like textures and save files.
 - **Real-Time Inputs**: The thread API and Producer-Consumer simulation ensure responsive controller handling.
 - **Parallel Processing**: Multi-core simulation enhances performance for compute-intensive game tasks, aligning with modern console architectures.
@@ -88,11 +88,11 @@ The game console theme shaped every aspect of the design:
 The theme made the project more engaging by grounding abstract OS concepts in a real-world use case, guiding decisions toward user-centric performance.
 
 ## 5. Challenges and Solutions
-- **Challenge**: Slow context switching (#2) increased latency.  
-  **Solution**: Optimized switching mechanism (#13) reduced latency to <1ms (simulated).
-- **Challenge**: Round Robin scheduler lacked priority support (#3).  
-  **Solution**: Added priority-based scheduling (#14) to prioritize critical game tasks.
-- **Challenge**: Large page tables impacted performance (#4).  
+- **Challenge**: Slow context switching (#3) increased latency.  
+  **Solution**: Optimized switching mechanism (#14) reduced latency to <1ms (simulated).
+- **Challenge**: Round Robin scheduler lacked priority support (#4).  
+  **Solution**: Added priority-based scheduling (#15) to prioritize critical game tasks.
+- **Challenge**: Large page tables impacted performance (#5).  
   **Solution**: Completed paging efficiently, with future optimization potential noted.
 
 These challenges were tracked and resolved using GitHub Issues, ensuring traceability and team coordination.
@@ -105,4 +105,4 @@ The Game Console OS simulation successfully implemented a lightweight, efficient
 - **Security Features**: Implement file permissions or encrypted save files for user data protection.
 - **Extended Testing**: Conduct stress tests with larger datasets to validate scalability.
 
-**Commit**: `git commit -m "Added final report #19"`
+**Commit**: `git commit -m "Added final report #16"`
