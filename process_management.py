@@ -1,4 +1,3 @@
-
 class PCB:
     def __init__(self, pid, priority):
         self.pid = pid
