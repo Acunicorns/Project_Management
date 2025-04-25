@@ -16,6 +16,6 @@ Week 1 focused on the Process Management phase. Tasks #1, #2, and #3 were addres
 
 
 ## Next Steps
-- Complete optimization tasks (#13, #14).
+- Complete optimization tasks (#14, #15).
 - Start Memory Management phase (#4, #5).
 - Simulate Week 2 meeting to review progress.
