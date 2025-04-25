@@ -84,11 +84,11 @@ python concurrency.py
 - Update `Progress-Report.md` for weekly progress (if applicable).
 
 ## Authors
-- Member 1
-- Member 2
-- Member 3
-- Member 4
-- Member 5
+- Pelin Ece Burgun
+- İrem Aras
+- Oğulcan Zorba
+- Sena Küçüksaraç
+- Furkan Küçük
 
 **Note**: Replace placeholder names with actual team member names.
 
