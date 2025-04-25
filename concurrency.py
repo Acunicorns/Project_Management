@@ -1,56 +1,59 @@
 class Lock:
-    def __init__(self):
+    def _init_(self):
         self.locked = False
 
     def acquire(self):
-        """Acquire the lock."""
         if not self.locked:
             self.locked = True
             return True
         return False
 
     def release(self):
-        """Release the lock."""
         self.locked = False
 
 class ConditionVariable:
-    def __init__(self):
+    def _init_(self):
         self.waiting_threads = []
 
     def wait(self, thread_id):
-        """Put thread in waiting state."""
         self.waiting_threads.append(thread_id)
 
     def signal(self):
-        """Signal one waiting thread."""
         if self.waiting_threads:
             return self.waiting_threads.pop(0)
         return None
 
-class ThreadAPI:
-    def __init__(self):
-        self.threads = {}
+class ProducerConsumer:
+    def _init_(self, buffer_size):
+        self.buffer = []
+        self.buffer_size = buffer_size
         self.lock = Lock()
-        self.condition = ConditionVariable()
+        self.not_full = ConditionVariable()
+        self.not_empty = ConditionVariable()
 
-    def create_thread(self, thread_id, task):
-        """Create a new thread for a controller task."""
-        self.threads[thread_id] = Thread(thread_id, task)
-        return self.threads[thread_id]
-
-    def run_thread(self, thread_id):
-        """Run the specified thread with synchronization."""
+    def produce(self, thread_id, item):
+        """Produce an item (e.g., controller input)."""
+        while len(self.buffer) >= self.buffer_size:
+            self.not_full.wait(thread_id)
         if self.lock.acquire():
-            self.threads[thread_id].start()
+            self.buffer.append(item)
+            print(f"Thread {thread_id} produced {item}")
             self.lock.release()
-        else:
-            self.condition.wait(thread_id)
-            self.run_thread(thread_id)
+            self.not_empty.signal()
+
+    def consume(self, thread_id):
+        """Consume an item (e.g., game logic processing)."""
+        while not self.buffer:
+            self.not_empty.wait(thread_id)
+        if self.lock.acquire():
+            item = self.buffer.pop(0)
+            print(f"Thread {thread_id} consumed {item}")
+            self.lock.release()
+            self.not_full.signal()
+            return item
 
 # Example usage
-if __name__ == "__main__":
-    api = ThreadAPI()
-    api.create_thread(1, "Read joystick input")
-    api.create_thread(2, "Process button input")
-    api.run_thread(1)  # Runs with lock
-    api.run_thread(2)  # Waits if lock is held
+if _name_ == "_main_":
+    pc = ProducerConsumer(3)
+    pc.produce(1, "Joystick input")  # Thread 1 produces
+    pc.consume(2)  # Thread 2 consumes
