@@ -1,5 +1,5 @@
 class PageTable:
-    def __init__(self):
+    def _init_(self):
         self.pages = {}  # Maps virtual page to physical frame
 
     def allocate_page(self, virtual_page, physical_frame):
@@ -8,10 +8,23 @@ class PageTable:
 
     def get_physical_address(self, virtual_page):
         """Get physical address for a virtual page."""
-        return self.pages.get(virtual_page, None)
+        if virtual_page not in self.pages:
+            raise ValueError("Page fault: Virtual page not allocated")
+        return self.pages[virtual_page]
+
+    def translate_address(self, virtual_address):
+        """Translate virtual address to physical address."""
+        page_size = 4096  # 4KB pages
+        virtual_page = virtual_address // page_size
+        offset = virtual_address % page_size
+        physical_frame = self.get_physical_address(virtual_page)
+        if physical_frame is None:
+            return None  # Page fault
+        return physical_frame * page_size + offset
 
 # Example usage
-if __name__ == "__main__":
+if _name_ == "_main_":
     pt = PageTable()
     pt.allocate_page(1, 100)  # Allocate texture data
-    print(pt.get_physical_address(1))  # Output: 100
+    physical_addr = pt.translate_address(4096)  # Virtual address = 4096
+    print(physical_addr)  # Output: 409600 (100 * 4096)
