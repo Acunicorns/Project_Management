@@ -1,36 +1,36 @@
 # Game Console OS Simulation Project Plan
 
 ## Project Overview
-This project simulates a game console operating system optimized for low-latency process management, efficient memory allocation, concurrent handling of game inputs, and a file system for game assets. The system will be developed in Python, using GitHub for version control and task management.
+This project simulates a game console operating system optimized for low-latency process management, efficient memory allocation, concurrent handling of game inputs, and a file system for game assets. The system is developed in Python, using GitHub for version control and task management.
 
 ## Work Breakdown Structure (WBS)
-- **1. Process Management**
-  - 1.1 Design Process Control Block (PCB) for game processes
-  - 1.2 Implement process creation, switching, and termination
-  - 1.3 Implement a Round Robin scheduler with low-latency for game tasks
-- **2. Memory Management**
-  - 2.1 Implement paging for game asset memory allocation
-  - 2.2 Simulate address translation using page tables
-- **3. Concurrency & Synchronization**
-  - 3.1 Design a thread API for controller input handling
-  - 3.2 Implement locks and condition variables
-  - 3.3 Simulate Producer-Consumer problem for game input/output
-- **4. File System**
-  - 4.1 Design a directory structure for game save files and assets
-  - 4.2 Implement file creation, reading, writing, and deletion
-- **5. Bonus Features (Optional)**
-  - 5.1 Visualization of process scheduling queues
-  - 5.2 Simulated multi-core CPU for parallel game tasks
+- **1. Process Management** (Completed)
+  - 1.1 Design Process Control Block (PCB) for game processes (#1)
+  - 1.2 Implement process creation, switching, and termination (#2)
+  - 1.3 Implement a Round Robin scheduler with low-latency for game tasks (#3)
+- **2. Memory Management** (Completed)
+  - 2.1 Implement paging for game asset memory allocation (#4)
+  - 2.2 Simulate address translation using page tables (#5)
+- **3. Concurrency & Synchronization** (Completed)
+  - 3.1 Design a thread API for controller input handling (#6)
+  - 3.2 Implement locks and condition variables (#7)
+  - 3.3 Simulate Producer-Consumer problem for game input/output (#8)
+- **4. File System** (Completed)
+  - 4.1 Design a directory structure for game save files and assets (#9)
+  - 4.2 Implement file creation, reading, writing, deletion (#10)
+- **5. Bonus Features** (Completed)
+  - 5.1 Visualization of process scheduling queues (#11)
+  - 5.2 Simulated multi-core CPU for parallel game tasks (#12)
 
 ## Timeline
-| Milestone                     | Planned Date |
-|-------------------------------|--------------|
-| Process Management Complete   | 2025-05-10   |
-| Memory Management Complete    | 2025-05-20   |
-| Concurrency Complete          | 2025-05-30   |
-| File System Complete          | 2025-06-05   |
-| Bonus Features (Optional)     | 2025-06-10   |
-| Final Report and Presentation | 2025-06-15   |
+| Milestone                     | Planned Date | Status      |
+|-------------------------------|--------------|-------------|
+| Process Management Complete   | 2025-05-10   | Completed   |
+| Memory Management Complete    | 2025-05-23   | Completed   |
+| Concurrency Complete          | 2025-05-30   | Completed   |
+| File System Complete          | 2025-06-05   | Completed   |
+| Bonus Features Complete       | 2025-06-10   | Completed   |
+| Final Report and Presentation | 2025-06-15   | In Progress |
 
 ## Resources
 - **Programming Language**: Python 3.9+
@@ -39,17 +39,17 @@ This project simulates a game console operating system optimized for low-latency
 - **Hardware**: Standard laptops for development and simulation
 
 ## Task Management
-Tasks will be tracked using GitHub Issues. Each task will be assigned an issue number, and commits will reference these issues (e.g., `#1` for PCB design). Weekly status meetings will be simulated to review progress, identify issues, and create new tasks.
+All tasks (#1 to #14) have been completed and tracked using GitHub Issues. Commits reference issue numbers (e.g., `#1` for PCB design). The project is now preparing for the final report and presentation.
 
 ## Risks
-| Risk                              | Mitigation                     |
-|-----------------------------------|--------------------------------|
-| Scheduler latency issues          | Optimize Round Robin algorithm (#5) |
-| Memory allocation inefficiencies  | Add fragmentation handling (#6) |
-| Concurrency bugs in threads       | Early testing with small datasets |
+| Risk                              | Mitigation                     | Status    |
+|-----------------------------------|--------------------------------|-----------|
+| Scheduler latency issues          | Optimized Round Robin (#13)    | Resolved  |
+| Memory allocation inefficiencies  | Added priority scheduling (#14) | Resolved  |
+| Concurrency bugs in threads       | Early testing with small datasets | Resolved |
 
 ## Stakeholders
 | Stakeholder | Role                | Involvement                     |
 |-------------|---------------------|---------------------------------|
-| Team        | Developers          | Implement and test OS components |
+| Team        | Developers          | Implemented and tested OS components |
 | Instructor  | Evaluator           | Review deliverables and demo    |
