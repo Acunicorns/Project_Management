@@ -1,7 +1,7 @@
 # Progress Report - Week 1 (1-7 April 2025)
 
 ## Overview
-Week 1 focused on the Process Management phase. Tasks #1, #2, and #3 were addressed, with some performance issues identified. New tasks (#13, #14) were created to resolve issues and adjust timelines.
+Week 1 focused on the Process Management phase. Tasks #1, #2, and #3 were addressed, with some performance issues identified. New tasks (#14, #15) were created to resolve issues and adjust timelines.
 
 ## Progress Table
 | Date       | Metric             | Planned | Actual | Gap   |
